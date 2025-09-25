@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - Flask MySQL Login System{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="mb-0">Welcome to Your Dashboard</h4>
+            </div>
+            <div class="card-body">
+                <h5>Hello, {{ user.username }}!</h5>
+                <p class="text-muted">Account created: {{ user.created_at.strftime('%B %d, %Y at %I:%M %p') }}</p>
+                
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <div class="card bg-light">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">👤 Profile</h5>
+                                <p class="card-text">Manage your account settings</p>
+                                <button class="btn btn-outline-primary" disabled>Coming Soon</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card bg-light">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">📊 Analytics</h5>
+                                <p class="card-text">View your activity</p>
+                                <button class="btn btn-outline-primary" disabled>Coming Soon</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Quick Actions</h5>
+            </div>
+            <div class="card-body">
+                <div class="d-grid gap-2">
+                    <button class="btn btn-outline-primary" onclick="loadUserInfo()">
+                        Load User Info
+                    </button>
+                    <button class="btn btn-outline-secondary" onclick="checkAuthStatus()">
+                        Check Auth Status
+                    </button>
+                    <a href="{{ url_for('main.logout') }}" class="btn btn-outline-danger">
+                        Logout
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card mt-3">
+            <div class="card-header">
+                <h6 class="mb-0">User Information</h6>
+            </div>
+            <div class="card-body">
+                <div id="user-info">
+                    <p><strong>ID:</strong> {{ user.id }}</p>
+                    <p><strong>Username:</strong> {{ user.username }}</p>
+                    <p><strong>Status:</strong> 
+                        <span class="badge bg-success">Active</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InternshipAI - Complete Your Profile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'primary': '#3B82F6',
+                        'secondary': '#10B981',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-inter bg-gray-50 min-h-screen">
+    <!-- Loading State -->
+    <div id="loading" class="fixed inset-0 bg-white flex items-center justify-center z-50">
+        <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Back to Home -->
+                <div class="flex items-center space-x-4">
+                    <a href="home.html" class="flex items-center text-gray-600 hover:text-primary transition-colors">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                        </svg>
+                        Back to Home
+                    </a>
+                    <h1 class="text-xl font-bold text-primary">Complete Your Profile</h1>
+                </div>
+
+                <!-- User Info -->
+                <div class="flex items-center space-x-4">
+                    <span id="user-welcome" class="text-gray-700 hidden">Welcome, <span id="username"></span>!</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+        <div class="bg-white rounded-lg shadow-sm border border-gray-200">
+            <div class="px-6 py-4 border-b border-gray-200">
+                <h2 class="text-2xl font-bold text-gray-900">Complete Your Profile</h2>
+                <p class="mt-2 text-gray-600">Help us find the perfect internship opportunities for you by completing your profile.</p>
+            </div>
+
+            <form id="complete-profile-form" class="p-6 space-y-8">
+                <!-- Personal Information -->
+                <div class="space-y-6">
+                    <h3 class="text-lg font-semibold text-gray-900 border-b border-gray-200 pb-2">Personal Information</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="aadhar_id" class="block text-sm font-medium text-gray-700 mb-2">Aadhar ID *</label>
+                            <input type="text" id="aadhar_id" name="aadhar_id" maxlength="12" pattern="[0-9]{12}" required
+                                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                                   placeholder="123456789012">
+                        </div>
+                        
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Full Name *</label>
+                            <input type="text" id="name" name="name" required
+                                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                                   placeholder="John Doe">
+                        </div>
+                        
+                        <div>
+                            <label for="dob" class="block text-sm font-medium text-gray-700 mb-2">Date of Birth *</label>
+                            <input type="date" id="dob" name="dob" required
+                                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                        </div>
+                        
+                        <div>
+                            <label for="state" class="block text-sm font-medium text-gray-700 mb-2">State *</label>
+                            <select id="state" name="state" required
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                                <option value="">Select State</option>
+                                <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                <option value="Assam">Assam</option>
+                                <option value="Bihar">Bihar</option>
+                                <option value="Chhattisgarh">Chhattisgarh</option>
+                                <option value="Goa">Goa</option>
+                                <option value="Gujarat">Gujarat</option>
+                                <option value="Haryana">Haryana</option>
+                                <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                <option value="Jharkhand">Jharkhand</option>
+                                <option value="Karnataka">Karnataka</option>
+                                <option value="Kerala">Kerala</option>
+                                <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                <option value="Maharashtra">Maharashtra</option>
+                                <option value="Manipur">Manipur</option>
+                                <option value="Meghalaya">Meghalaya</option>
+                                <option value="Mizoram">Mizoram</option>
+                                <option value="Nagaland">Nagaland</option>
+                                <option value="Odisha">Odisha</option>
+                                <option value="Punjab">Punjab</option>
+                                <option value="Rajasthan">Rajasthan</option>
+                                <option value="Sikkim">Sikkim</option>
+                                <option value="Tamil Nadu">Tamil Nadu</option>
+                                <option value="Telangana">Telangana</option>
+                                <option value="Tripura">Tripura</option>
+                                <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                <option value="Uttarakhand">Uttarakhand</option>
+                                <option value="West Bengal">West Bengal</option>
+                                <option value="Delhi">Delhi</option>
+                                <option value="Chandigarh">Chandigarh</option>
+                                <option value="Puducherry">Puducherry</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label for="city" class="block text-sm font-medium text-gray-700 mb-2">City *</label>
+                            <input type="text" id="city" name="city" required
+                                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                                   placeholder="Enter your city">
+                        </div>
+                        
+                        <div>
+                            <label for="pincode" class="block text-sm font-medium text-gray-700 mb-2">Pincode *</label>
+                            <input type="text" id="pincode" name="pincode" required
+                                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                                   placeholder="Enter 6-digit pincode" pattern="[0-9]{6}" maxlength="6">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Education -->
+                <div class="space-y-6">
+                    <h3 class="text-lg font-semibold text-gray-900 border-b border-gray-200 pb-2">Education</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="education_level" class="block text-sm font-medium text-gray-700 mb-2">Education Level *</label>
+                            <select id="education_level" name="education_level" required
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                                <option value="">Select Education Level</option>
+                                <option value="Undergraduate">Undergraduate</option>
+                                <option value="Graduate">Graduate</option>
+                                <option value="Postgraduate">Postgraduate</option>
+                                <option value="PhD">PhD</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label for="degree" class="block text-sm font-medium text-gray-700 mb-2">Degree *</label>
+                            <input type="text" id="degree" name="degree" required
+                                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                                   placeholder="B.Tech Computer Science">
+                        </div>
+                        
+                        <div>
+                            <label for="year_of_study" class="block text-sm font-medium text-gray-700 mb-2">Year of Study *</label>
+                            <select id="year_of_study" name="year_of_study" required
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                                <option value="">Select Year</option>
+                                <option value="1st Year">1st Year</option>
+                                <option value="2nd Year">2nd Year</option>
+                                <option value="3rd Year">3rd Year</option>
+                                <option value="4th Year">4th Year</option>
+                                <option value="Final Year">Final Year</option>
+                                <option value="Graduated">Graduated</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label for="gpa_percentage" class="block text-sm font-medium text-gray-700 mb-2">GPA/Percentage *</label>
+                            <input type="number" id="gpa_percentage" name="gpa_percentage" min="0" max="100" step="0.01" required
+                                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                                   placeholder="85.5">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skills and Courses -->
+                <div class="space-y-6">
+                    <h3 class="text-lg font-semibold text-gray-900 border-b border-gray-200 pb-2">Skills and Courses</h3>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <label for="relevant_courses" class="block text-sm font-medium text-gray-700 mb-2">Relevant Courses Completed</label>
+                            <textarea id="relevant_courses" name="relevant_courses" rows="3"
+                                      class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                                      placeholder="Data Structures, Algorithms, Web Development, Machine Learning"></textarea>
+                        </div>
+                        
+                        <div>
+                            <label for="technical_skills" class="block text-sm font-medium text-gray-700 mb-2">Technical Skills</label>
+                            <textarea id="technical_skills" name="technical_skills" rows="3"
+                                      class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                                      placeholder="Python, JavaScript, React, Node.js, MySQL, Git"></textarea>
+                        </div>
+                        
+                        <div>
+                            <label for="soft_skills" class="block text-sm font-medium text-gray-700 mb-2">Soft Skills</label>
+                            <textarea id="soft_skills" name="soft_skills" rows="3"
+                                      class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                                      placeholder="Communication, Teamwork, Problem Solving, Leadership"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Certifications -->
+                <div class="space-y-6">
+                    <h3 class="text-lg font-semibold text-gray-900 border-b border-gray-200 pb-2">Certifications</h3>
+                    
+                    <div>
+                        <label for="certifications" class="block text-sm font-medium text-gray-700 mb-2">Upload Certification Files</label>
+                        <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+                            <div class="space-y-1 text-center">
+                                <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48">
+                                    <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                                <div class="flex text-sm text-gray-600">
+                                    <label for="certifications" class="relative cursor-pointer bg-white rounded-md font-medium text-primary hover:text-primary focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-primary">
+                                        <span>Upload files</span>
+                                        <input id="certifications" name="certifications" type="file" class="sr-only" multiple accept=".pdf,.jpg,.jpeg,.png">
+                                    </label>
+                                    <p class="pl-1">or drag and drop</p>
+                                </div>
+                                <p class="text-xs text-gray-500">PDF, PNG, JPG up to 10MB each</p>
+                            </div>
+                        </div>
+                        <div id="uploaded-files" class="mt-4 space-y-2 hidden">
+                            <h4 class="text-sm font-medium text-gray-700">Uploaded Files:</h4>
+                            <div id="file-list" class="space-y-1"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience -->
+                <div class="space-y-6">
+                    <h3 class="text-lg font-semibold text-gray-900 border-b border-gray-200 pb-2">Experience</h3>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <label for="previous_internships" class="block text-sm font-medium text-gray-700 mb-2">Previous Internships</label>
+                            <textarea id="previous_internships" name="previous_internships" rows="3"
+                                      class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                                      placeholder="Company Name - Role - Duration - Key achievements"></textarea>
+                        </div>
+                        
+                        <div>
+                            <label for="projects" class="block text-sm font-medium text-gray-700 mb-2">Projects</label>
+                            <textarea id="projects" name="projects" rows="3"
+                                      class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                                      placeholder="Project Name - Technologies Used - Description - GitHub/Demo Link"></textarea>
+                        </div>
+                        
+                        <div>
+                            <label for="hackathons_competitions" class="block text-sm font-medium text-gray-700 mb-2">Hackathons / Competitions</label>
+                            <textarea id="hackathons_competitions" name="hackathons_competitions" rows="3"
+                                      class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                                      placeholder="Event Name - Position/Achievement - Year"></textarea>
+                        </div>
+                        
+                        <div>
+                            <label for="research_experience" class="block text-sm font-medium text-gray-700 mb-2">Research Experience</label>
+                            <textarea id="research_experience" name="research_experience" rows="3"
+                                      class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                                      placeholder="Research Topic - Institution - Duration - Publications/Papers"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Preferences -->
+                <div class="space-y-6">
+                    <h3 class="text-lg font-semibold text-gray-900 border-b border-gray-200 pb-2">Internship Preferences</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="internship_type_preference" class="block text-sm font-medium text-gray-700 mb-2">Internship Type Preference *</label>
+                            <select id="internship_type_preference" name="internship_type_preference" required
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                                <option value="">Select Type</option>
+                                <option value="On-site">On-site</option>
+                                <option value="Remote">Remote</option>
+                                <option value="Hybrid">Hybrid</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label for="duration_preference" class="block text-sm font-medium text-gray-700 mb-2">Duration Preference *</label>
+                            <select id="duration_preference" name="duration_preference" required
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                                <option value="">Select Duration</option>
+                                <option value="1-2 months">1-2 months</option>
+                                <option value="3-4 months">3-4 months</option>
+                                <option value="5-6 months">5-6 months</option>
+                                <option value="6+ months">6+ months</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label for="stipend_expectation" class="block text-sm font-medium text-gray-700 mb-2">Stipend Expectation</label>
+                            <select id="stipend_expectation" name="stipend_expectation"
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                                <option value="">Select Stipend Range</option>
+                                <option value="Unpaid">Unpaid</option>
+                                <option value="< ₹10,000">< ₹10,000</option>
+                                <option value="₹10,000 - ₹25,000">₹10,000 - ₹25,000</option>
+                                <option value="₹25,000 - ₹50,000">₹25,000 - ₹50,000</option>
+                                <option value="₹50,000+">₹50,000+</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label for="preferred_industry" class="block text-sm font-medium text-gray-700 mb-2">Preferred Industry</label>
+                            <textarea id="preferred_industry" name="preferred_industry" rows="3"
+                                      class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                                      placeholder="Technology, Finance, Healthcare, E-commerce, Startups"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="flex justify-end space-x-4 pt-6 border-t border-gray-200">
+                    <button type="button" onclick="window.location.href='home.html'" 
+                            class="px-6 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+                        Cancel
+                    </button>
+                    <button type="submit" id="submit-btn"
+                            class="px-6 py-2 bg-primary text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary disabled:opacity-50 disabled:cursor-not-allowed">
+                        Save Profile
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- JavaScript -->
+    <script src="../src/js/complete-profile.js"></script>
+</body>
+</html>

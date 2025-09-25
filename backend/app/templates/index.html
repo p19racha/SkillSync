@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Flask MySQL Login System{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="jumbotron bg-light p-5 rounded">
+            <h1 class="display-4">Welcome to Flask MySQL Login System</h1>
+            <p class="lead">A complete authentication system using Flask, MySQL, and AJAX.</p>
+            <hr class="my-4">
+            {% if current_user.is_authenticated %}
+                <p>Welcome back, <strong>{{ current_user.username }}</strong>!</p>
+                <a class="btn btn-primary btn-lg" href="{{ url_for('main.dashboard') }}" role="button">
+                    Go to Dashboard
+                </a>
+            {% else %}
+                <p>Please log in or register to access the dashboard.</p>
+                <a class="btn btn-primary btn-lg me-3" href="{{ url_for('main.login') }}" role="button">
+                    Login
+                </a>
+                <a class="btn btn-outline-primary btn-lg" href="{{ url_for('main.register') }}" role="button">
+                    Register
+                </a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<div class="row mt-5">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">🔐 Secure Authentication</h5>
+                <p class="card-text">Password hashing with Flask-Bcrypt and session management with Flask-Login.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">🗄️ MySQL Database</h5>
+                <p class="card-text">Reliable MySQL database integration with SQLAlchemy ORM.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">⚡ AJAX Forms</h5>
+                <p class="card-text">Smooth user experience with AJAX form submissions and real-time feedback.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

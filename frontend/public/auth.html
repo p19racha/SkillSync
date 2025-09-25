@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InternshipAI - Login & Register</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'primary': '#3B82F6',
+                        'secondary': '#10B981',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-inter min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50">
+    <!-- Header with Logo -->
+    <header class="p-6">
+        <div class="container mx-auto">
+            <a href="index.html" class="text-2xl font-bold text-primary hover:text-blue-700 transition-colors">
+                InternshipAI
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-8">
+        <div class="max-w-md mx-auto">
+            <!-- Card Container -->
+            <div class="bg-white rounded-2xl shadow-xl p-8">
+                <!-- Tab Navigation -->
+                <div class="flex mb-8">
+                    <button 
+                        id="login-tab" 
+                        class="flex-1 py-3 px-4 text-center font-semibold rounded-lg transition-all duration-200 active-tab"
+                    >
+                        Login
+                    </button>
+                    <button 
+                        id="register-tab" 
+                        class="flex-1 py-3 px-4 text-center font-semibold rounded-lg transition-all duration-200 inactive-tab"
+                    >
+                        Register
+                    </button>
+                </div>
+
+                <!-- Login Form -->
+                <div id="login-form" class="form-container">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">Welcome Back</h2>
+                    
+                    <form class="space-y-6">
+                        <!-- Email Input -->
+                        <div>
+                            <label for="login-email" class="block text-sm font-medium text-gray-700 mb-2">
+                                Email Address
+                            </label>
+                            <input 
+                                type="email" 
+                                id="login-email" 
+                                name="email" 
+                                placeholder="Enter your email"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 hover:border-gray-400"
+                                required
+                            >
+                        </div>
+
+                        <!-- Password Input -->
+                        <div>
+                            <label for="login-password" class="block text-sm font-medium text-gray-700 mb-2">
+                                Password
+                            </label>
+                            <input 
+                                type="password" 
+                                id="login-password" 
+                                name="password" 
+                                placeholder="Enter your password"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 hover:border-gray-400"
+                                required
+                            >
+                        </div>
+
+                        <!-- Forgot Password Link -->
+                        <div class="text-right">
+                            <a href="#" class="text-sm text-primary hover:text-blue-700 transition-colors">
+                                Forgot Password?
+                            </a>
+                        </div>
+
+                        <!-- Login Button -->
+                        <button 
+                            type="submit" 
+                            class="w-full bg-primary text-white py-3 px-4 rounded-lg font-semibold hover:bg-blue-700 focus:ring-4 focus:ring-blue-200 transition-all duration-200 transform hover:scale-[1.02]"
+                        >
+                            Sign In
+                        </button>
+                    </form>
+
+                    <!-- Social Login -->
+                    <div class="mt-6">
+                        <div class="relative">
+                            <div class="absolute inset-0 flex items-center">
+                                <div class="w-full border-t border-gray-300"></div>
+                            </div>
+                            <div class="relative flex justify-center text-sm">
+                                <span class="px-2 bg-white text-gray-500">Or continue with</span>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 grid grid-cols-2 gap-3">
+                            <button class="flex justify-center items-center px-4 py-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
+                                <div class="w-5 h-5 bg-red-500 rounded mr-2"></div>
+                                <span class="text-sm font-medium text-gray-700">Google</span>
+                            </button>
+                            <button class="flex justify-center items-center px-4 py-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
+                                <div class="w-5 h-5 bg-blue-600 rounded mr-2"></div>
+                                <span class="text-sm font-medium text-gray-700">LinkedIn</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Register Form -->
+                <div id="register-form" class="form-container hidden">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">Create Account</h2>
+                    
+                    <form class="space-y-6">
+
+                        <!-- Email Input -->
+                        <div>
+                            <label for="register-email" class="block text-sm font-medium text-gray-700 mb-2">
+                                Email Address
+                            </label>
+                            <input 
+                                type="email" 
+                                id="register-email" 
+                                name="email" 
+                                placeholder="Enter your email address"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 hover:border-gray-400"
+                                required
+                            >
+                        </div>
+
+                        <!-- Password Input -->
+                        <div>
+                            <label for="register-password" class="block text-sm font-medium text-gray-700 mb-2">
+                                Password
+                            </label>
+                            <input 
+                                type="password" 
+                                id="register-password" 
+                                name="password" 
+                                placeholder="Create a password"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 hover:border-gray-400"
+                                required
+                            >
+                        </div>
+
+                        <!-- Confirm Password Input -->
+                        <div>
+                            <label for="confirm-password" class="block text-sm font-medium text-gray-700 mb-2">
+                                Confirm Password
+                            </label>
+                            <input 
+                                type="password" 
+                                id="confirm-password" 
+                                name="confirmPassword" 
+                                placeholder="Confirm your password"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 hover:border-gray-400"
+                                required
+                            >
+                        </div>
+
+                        <!-- Terms and Conditions -->
+                        <div class="flex items-start">
+                            <input 
+                                type="checkbox" 
+                                id="terms" 
+                                name="terms" 
+                                class="mt-1 h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded"
+                                required
+                            >
+                            <label for="terms" class="ml-3 text-sm text-gray-600">
+                                I agree to the 
+                                <a href="#" class="text-primary hover:text-blue-700 transition-colors">Terms of Service</a> 
+                                and 
+                                <a href="#" class="text-primary hover:text-blue-700 transition-colors">Privacy Policy</a>
+                            </label>
+                        </div>
+
+                        <!-- Register Button -->
+                        <button 
+                            type="submit" 
+                            class="w-full bg-secondary text-white py-3 px-4 rounded-lg font-semibold hover:bg-green-700 focus:ring-4 focus:ring-green-200 transition-all duration-200 transform hover:scale-[1.02]"
+                        >
+                            Create Account
+                        </button>
+                    </form>
+
+                    <!-- Social Registration -->
+                    <div class="mt-6">
+                        <div class="relative">
+                            <div class="absolute inset-0 flex items-center">
+                                <div class="w-full border-t border-gray-300"></div>
+                            </div>
+                            <div class="relative flex justify-center text-sm">
+                                <span class="px-2 bg-white text-gray-500">Or sign up with</span>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 grid grid-cols-2 gap-3">
+                            <button class="flex justify-center items-center px-4 py-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
+                                <div class="w-5 h-5 bg-red-500 rounded mr-2"></div>
+                                <span class="text-sm font-medium text-gray-700">Google</span>
+                            </button>
+                            <button class="flex justify-center items-center px-4 py-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
+                                <div class="w-5 h-5 bg-blue-600 rounded mr-2"></div>
+                                <span class="text-sm font-medium text-gray-700">LinkedIn</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Back to Home Link -->
+            <div class="text-center mt-6">
+                <a href="index.html" class="text-gray-600 hover:text-primary transition-colors">
+                    ← Back to Home
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Styles -->
+    <style>
+        .active-tab {
+            background-color: #3B82F6;
+            color: white;
+            box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.1);
+        }
+        
+        .inactive-tab {
+            background-color: #F3F4F6;
+            color: #6B7280;
+        }
+        
+        .inactive-tab:hover {
+            background-color: #E5E7EB;
+            color: #374151;
+        }
+        
+        .form-container {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+
+    <!-- JavaScript -->
+    <script src="../src/js/auth.js"></script>
+</body>
+</html>
