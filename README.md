@@ -1,5 +1,7 @@
 # SkillSync
 
+⚠️ **WARNING: This project is NOT complete and may never be finished. Use at your own risk.** ⚠️
+
 A smart internship matching platform that connects students with relevant opportunities. Built with Flask, machine learning, and document processing capabilities.
 
 ## What it does
