@@ -76,4 +76,5 @@ The codebase is split into three main parts:
 
 ## Contributing
 
-Feel free to open issues or submit pull requests. The code follows standard Python conventions.
+Feel free to anything. 
+
